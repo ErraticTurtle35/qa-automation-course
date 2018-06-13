@@ -4,7 +4,7 @@ from Int2Lcd import Int2Lcd
 
 zero = [" _ ", "| |", "|_|"]
 one = [" ", " |", " |"]
-two = ["_", "_|", "|_"]
+two = [" _", " _|", "|_"]
 
 
 class TestInt2Lcd(unittest.TestCase):
