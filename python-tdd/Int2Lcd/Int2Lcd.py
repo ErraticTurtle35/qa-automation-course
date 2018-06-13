@@ -1,7 +1,9 @@
-numbers = (0, [" _ ", "| |", "|_|"])
+numbers = {
+    0: [" _ ", "| |", "|_|"],
+    1: [" ", " |", " |"]
+}
 
 
 class Int2Lcd:
     def convert(self, number):
-        if number == numbers[0]:
-            return [" _ ", "| |", "|_|"]
+        return numbers[number]
