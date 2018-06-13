@@ -1,2 +1,1 @@
-from . import Int2Lcd
-from . import TestIntToLcd
+from .Int2Lcd import Int2Lcd
