@@ -57,3 +57,4 @@ class TestInt2Lcd(unittest.TestCase):
 
     def test_display_zero_to_lcd(self):
         result = Int2Lcd().display(0)
+        self.assertListEqual([], result)

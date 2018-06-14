@@ -13,5 +13,8 @@ numbers = {
 
 
 class Int2Lcd:
+    def display(self, number):
+        return []
+
     def convert(self, number):
         return numbers[number]
