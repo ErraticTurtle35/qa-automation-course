@@ -1,3 +1,5 @@
+from itertools import zip_longest
+
 numbers = {
     0: [" _ ", "| |", "|_|"],
     1: [" ", " |", " |"],
@@ -13,8 +15,9 @@ numbers = {
 
 
 class Int2Lcd:
-    def display(self, number):
-        return []
+    def display(self, natural_number):
+        lcd_numbers = [self.convert(int(number)) for number in str(natural_number)]
+        return [" ".join(column) for column in zip_longest(*lcd_numbers)]
 
     def convert(self, number):
         return numbers[number]
