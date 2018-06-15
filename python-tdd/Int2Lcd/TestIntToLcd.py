@@ -16,6 +16,11 @@ all_natural_number_in_lcd_format = ['     _   _       _   _   _   _   _   _ ',
                                     '  |  _|  _| |_| |_  |_    | |_| |_| | |',
                                     '  | |_   _|   |  _| |_|   | |_|   | |_|']
 
+all_natural_number_in_lcd_number_list = [['   ', '  |', '  |'], [' _ ', ' _|', '|_ '], [' _ ', ' _|', ' _|'],
+                                         ['   ', '|_|', '  |'], [' _ ', '|_ ', ' _|'], [' _ ', '|_ ', '|_|'],
+                                         [' _ ', '  |', '  |'], [' _ ', '|_|', '|_|'], [' _ ', '|_|', '  |'],
+                                         [' _ ', '| |', '|_|']]
+
 
 class TestInt2Lcd(unittest.TestCase):
     def test_conversion_from_zero_to_lcd(self):
@@ -64,7 +69,7 @@ class TestInt2Lcd(unittest.TestCase):
 
     def test_conversion_from_1234567890_to_lcd_numbers_list(self):
         result = [Int2Lcd().convert(int(number)) for number in str(1234567890)]
-        self.assertListEqual([], result)
+        self.assertListEqual(all_natural_number_in_lcd_number_list, result)
 
     def test_display_1234567890_to_lcd(self):
         result = Int2Lcd().display(1234567890)
