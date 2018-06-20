@@ -21,3 +21,23 @@ class Int2Lcd:
 
     def convert(self, number):
         return numbers[number]
+
+    @property
+    def width(self):
+        return self._width
+
+    @property
+    def height(self):
+        return self._height
+
+    @width.setter
+    def width(self, width):
+        self._width = width
+
+    @height.setter
+    def height(self, height):
+        self._height = height
+
+    def __init__(self, width=None, height=None):
+        self._width = width
+        self._height = height
