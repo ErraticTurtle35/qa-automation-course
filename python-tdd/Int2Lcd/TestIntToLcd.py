@@ -76,6 +76,11 @@ class TestInt2Lcd(unittest.TestCase):
         self.assertListEqual(all_natural_number_in_lcd_format, result)
 
     def test_assignation_of_width_and_height(self):
-        int2lcd = Int2Lcd(1, 1)
+        int2lcd = Int2Lcd(width=1, height=1)
         self.assertEqual(int2lcd.width, 1)
         self.assertEqual(int2lcd.height, 1)
+
+    def test_conversion_from_zero_to_lcd_with_width_2(self):
+        int2lcd = Int2Lcd(width=2, height=1)
+        result = int2lcd.convert2(0)
+        self.assertListEqual([], result)
