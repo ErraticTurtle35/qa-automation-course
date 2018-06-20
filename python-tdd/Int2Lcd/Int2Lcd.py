@@ -15,7 +15,15 @@ numbers = {
 
 patterns = {
     0: [" _ ", "| |", "|_|"],
-    1: ["   ", "  |", "  |"]
+    1: ["   ", "  |", "  |"],
+    2: [" _ ", " _|", "|_ "],
+    3: [" _ ", " _|", " _|"],
+    4: ["   ", "|_|", "  |"],
+    5: [" _ ", "|_ ", " _|"],
+    6: [" _ ", "|_ ", "|_|"],
+    7: [" _ ", "  |", "  |"],
+    8: [" _ ", "|_|", "|_|"],
+    9: [" _ ", "|_|", "  |"]
 }
 
 
@@ -38,11 +46,22 @@ class Int2Lcd:
             number_pattern[1] = "|" + "".join([" " for i in range(self.width)]) + "|"
         elif number_pattern[1][0].isspace() and number_pattern[1][1].isspace() and number_pattern[1][2] == "|":
             number_pattern[1] = " " + "".join([" " for i in range(self.width)]) + "|"
+        elif number_pattern[1][0].isspace() and number_pattern[1][1] == "_" and number_pattern[1][2] == "|":
+            number_pattern[1] = " " + "".join(["_" for i in range(self.width)]) + "|"
+        elif number_pattern[1][0] == "|" and number_pattern[1][1] == "_" and number_pattern[1][2] == "|":
+            number_pattern[1] = "|" + "".join(["_" for i in range(self.width)]) + "|"
+        elif number_pattern[1][0] == "|" and number_pattern[1][1] == "_" and number_pattern[1][2].isspace():
+            number_pattern[1] = "|" + "".join(["_" for i in range(self.width)]) + " "
 
         if number_pattern[2][0] == "|" and number_pattern[2][1] == "_" and number_pattern[2][2] == "|":
             number_pattern[2] = "|" + "".join(["_" for i in range(self.width)]) + "|"
         elif number_pattern[2][0].isspace() and number_pattern[2][1].isspace() and number_pattern[2][2] == "|":
             number_pattern[2] = " " + "".join([" " for i in range(self.width)]) + "|"
+        elif number_pattern[2][0] == "|" and number_pattern[2][1] == "_" and number_pattern[2][2].isspace():
+            number_pattern[2] = "|" + "".join(["_" for i in range(self.width)]) + " "
+        elif number_pattern[2][0].isspace() and number_pattern[2][1] == "_" and number_pattern[2][2] == "|":
+            number_pattern[2] = " " + "".join(["_" for i in range(self.width)]) + "|"
+
         return number_pattern
 
     @property
