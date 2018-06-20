@@ -81,6 +81,11 @@ class TestInt2Lcd(unittest.TestCase):
         self.assertEqual(int2lcd.height, 1)
 
     def test_conversion_from_zero_to_lcd_with_width_2(self):
-        int2lcd = Int2Lcd(width=2, height=1)
+        int2lcd = Int2Lcd(width=3, height=1)
         result = int2lcd.convert2(0)
-        self.assertListEqual([" __ ", "|  |", "|__|"], result)
+        self.assertListEqual([" ___ ", "|   |", "|___|"], result)
+
+    def test_conversion_from_one_to_lcd_with_width_2(self):
+        int2lcd = Int2Lcd(width=3, height=1)
+        result = int2lcd.convert2(1)
+        self.assertListEqual(["     ", "    |", "    |"], result)
