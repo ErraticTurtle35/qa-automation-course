@@ -13,6 +13,10 @@ numbers = {
     9: [" _ ", "|_|", "  |"]
 }
 
+patterns = {
+    0: [" __ ", "|  |", "|__|"]
+}
+
 
 class Int2Lcd:
     def display(self, natural_number):
@@ -21,6 +25,9 @@ class Int2Lcd:
 
     def convert(self, number):
         return numbers[number]
+
+    def convert2(self, number):
+        return patterns[number]
 
     @property
     def width(self):
