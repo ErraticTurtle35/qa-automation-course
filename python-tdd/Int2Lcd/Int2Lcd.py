@@ -14,7 +14,8 @@ numbers = {
 }
 
 patterns = {
-    0: [" __ ", "|  |", "|__|"]
+    0: [" _ ", "| |", "|_|"],
+    1: ["   ", "  |", "  |"]
 }
 
 
@@ -27,7 +28,22 @@ class Int2Lcd:
         return numbers[number]
 
     def convert2(self, number):
-        return patterns[number]
+        number_pattern = patterns[number]
+        if number_pattern[0][0].isspace() and number_pattern[0][1] == "_" and number_pattern[0][2].isspace():
+            number_pattern[0] = " " + "".join(["_" for i in range(self.width)]) + " "
+        elif number_pattern[0][0].isspace() and number_pattern[0][1].isspace() and number_pattern[0][2].isspace():
+            number_pattern[0] = " " + "".join([" " for i in range(self.width)]) + " "
+
+        if number_pattern[1][0] == "|" and number_pattern[1][1].isspace() and number_pattern[1][2] == "|":
+            number_pattern[1] = "|" + "".join([" " for i in range(self.width)]) + "|"
+        elif number_pattern[1][0].isspace() and number_pattern[1][1].isspace() and number_pattern[1][2] == "|":
+            number_pattern[1] = " " + "".join([" " for i in range(self.width)]) + "|"
+
+        if number_pattern[2][0] == "|" and number_pattern[2][1] == "_" and number_pattern[2][2] == "|":
+            number_pattern[2] = "|" + "".join(["_" for i in range(self.width)]) + "|"
+        elif number_pattern[2][0].isspace() and number_pattern[2][1].isspace() and number_pattern[2][2] == "|":
+            number_pattern[2] = " " + "".join([" " for i in range(self.width)]) + "|"
+        return number_pattern
 
     @property
     def width(self):
