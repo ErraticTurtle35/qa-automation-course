@@ -66,7 +66,7 @@ class Int2Lcd:
             for pattern in number_pattern:
                 if "|" in pattern:
                     for repetition in range(self.height):
-                        if repetition == 0:
+                        if repetition != self.height - 1:
                             new_number_pattern.append(pattern.replace("_", " "))
                         else:
                             new_number_pattern.append(pattern)
