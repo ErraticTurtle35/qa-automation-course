@@ -2,18 +2,6 @@ from itertools import zip_longest
 
 
 class Int2Lcd:
-    numbers = {
-        0: [" _ ", "| |", "|_|"],
-        1: ["   ", "  |", "  |"],
-        2: [" _ ", " _|", "|_ "],
-        3: [" _ ", " _|", " _|"],
-        4: ["   ", "|_|", "  |"],
-        5: [" _ ", "|_ ", " _|"],
-        6: [" _ ", "|_ ", "|_|"],
-        7: [" _ ", "  |", "  |"],
-        8: [" _ ", "|_|", "|_|"],
-        9: [" _ ", "|_|", "  |"]
-    }
     patterns = {
         0: [" _ ", "| |", "|_|"],
         1: ["   ", "  |", "  |"],
@@ -32,7 +20,7 @@ class Int2Lcd:
         return [" ".join(column) for column in zip_longest(*lcd_numbers)]
 
     def convert(self, number):
-        return self.numbers[number]
+        return self.convert2(number)
 
     def convert2(self, number):
         number_pattern = self.patterns[number].copy()
