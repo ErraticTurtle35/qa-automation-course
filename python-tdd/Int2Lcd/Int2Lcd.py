@@ -1,4 +1,4 @@
-from itertools import zip_longest
+from itertools import zip_longest, repeat
 
 AVAILABLE_LCD_PATTERNS = {
     0: [" _ ", "| |", "|_|"],
@@ -62,6 +62,12 @@ class Int2Lcd:
         self._update_width_of_the_middle_row()
         self._update_width_of_the_lower_row()
 
+    def _update_width_of_the_first_row(self):
+        if self.number_pattern[0].isspace():
+            self.number_pattern[0] = self.__repeat_pattern(" ", self.width + 2)
+        else:
+            self.number_pattern[0] = " " + self.__repeat_pattern("_", self.width) + " "
+
     def _update_width_of_the_lower_row(self):
         if self.number_pattern[2][0] == "|" and self.number_pattern[2][1] == "_" and self.number_pattern[2][2] == "|":
             self.number_pattern[2] = "|" + "".join(["_" for i in range(self.width)]) + "|"
@@ -91,14 +97,6 @@ class Int2Lcd:
             2].isspace():
             self.number_pattern[1] = "|" + "".join(["_" for i in range(self.width)]) + " "
 
-    def _update_width_of_the_first_row(self):
-        if self.number_pattern[0][0].isspace() and self.number_pattern[0][1] == "_" and self.number_pattern[0][
-            2].isspace():
-            self.number_pattern[0] = " " + "".join(["_" for i in range(self.width)]) + " "
-        elif self.number_pattern[0][0].isspace() and self.number_pattern[0][1].isspace() and self.number_pattern[0][
-            2].isspace():
-            self.number_pattern[0] = " " + "".join([" " for i in range(self.width)]) + " "
-
     def _update_height_of_number_pattern(self):
         new_number_pattern = []
         for pattern in self.number_pattern:
@@ -111,6 +109,10 @@ class Int2Lcd:
             else:
                 new_number_pattern.append(pattern)
         self.number_pattern = new_number_pattern
+
+    @staticmethod
+    def __repeat_pattern(pattern, repetitions):
+        return "".join(repeat(pattern, repetitions))
 
     def __init__(self, width=None, height=None):
         self._width = width
