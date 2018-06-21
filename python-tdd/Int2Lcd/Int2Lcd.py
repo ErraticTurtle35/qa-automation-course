@@ -21,10 +21,10 @@ class Int2Lcd:
 
     def convert(self, number):
         self.number_pattern = AVAILABLE_LCD_PATTERNS[number].copy()
-        self._update_width()
-        if self.height > 1:
-            new_number_pattern = self._update_height_of_rows()
-            return new_number_pattern
+        if self._conversion_requires_update_width():
+            self._update_width_of_number_pattern()
+        if self._conversion_requires_update_height():
+            self._update_height_of_number_pattern()
         return self.number_pattern
 
     @property
@@ -51,7 +51,13 @@ class Int2Lcd:
     def number_pattern(self, pattern):
         self._number_pattern = pattern
 
-    def _update_width(self):
+    def _conversion_requires_update_width(self):
+        return self.width > 1
+
+    def _conversion_requires_update_height(self):
+        return self.height > 1
+
+    def _update_width_of_number_pattern(self):
         self._update_width_of_the_first_row()
         self._update_width_of_the_middle_row()
         self._update_width_of_the_lower_row()
@@ -93,7 +99,7 @@ class Int2Lcd:
             2].isspace():
             self.number_pattern[0] = " " + "".join([" " for i in range(self.width)]) + " "
 
-    def _update_height_of_rows(self):
+    def _update_height_of_number_pattern(self):
         new_number_pattern = []
         for pattern in self.number_pattern:
             if "|" in pattern:
@@ -104,7 +110,7 @@ class Int2Lcd:
                         new_number_pattern.append(pattern)
             else:
                 new_number_pattern.append(pattern)
-        return new_number_pattern
+        self.number_pattern = new_number_pattern
 
     def __init__(self, width=None, height=None):
         self._width = width
