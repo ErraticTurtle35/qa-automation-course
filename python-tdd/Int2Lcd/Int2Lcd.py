@@ -60,17 +60,7 @@ class Int2Lcd:
     def _update_width_of_number_pattern(self):
         self.__update_width_of_the_first_row()
         self.__update_width_of_the_middle_row()
-        self._update_width_of_the_lower_row()
-
-    def _update_width_of_the_lower_row(self):
-        if self.number_pattern[2][0] == "|" and self.number_pattern[2][1] == "_" and self.number_pattern[2][2] == "|":
-            self.number_pattern[2] = "|" + "".join(["_" for i in range(self.width)]) + "|"
-        elif self.number_pattern[2][0].isspace() and self.number_pattern[2][1].isspace() and self.number_pattern[2][2] == "|":
-            self.number_pattern[2] = " " + "".join([" " for i in range(self.width)]) + "|"
-        elif self.number_pattern[2][0] == "|" and self.number_pattern[2][1] == "_" and self.number_pattern[2][2].isspace():
-            self.number_pattern[2] = "|" + "".join(["_" for i in range(self.width)]) + " "
-        elif self.number_pattern[2][0].isspace() and self.number_pattern[2][1] == "_" and self.number_pattern[2][2] == "|":
-            self.number_pattern[2] = " " + "".join(["_" for i in range(self.width)]) + "|"
+        self.__update_width_of_the_lower_row()
 
     def _update_height_of_number_pattern(self):
         new_number_pattern = []
@@ -95,6 +85,11 @@ class Int2Lcd:
         row_pattern = list(self.number_pattern[1])
         row_pattern[1] = self.__repeat_pattern(self.number_pattern[1][1], self.width)
         self.number_pattern[1] = "".join(row_pattern)
+
+    def __update_width_of_the_lower_row(self):
+        row_pattern = list(self.number_pattern[2])
+        row_pattern[1] = self.__repeat_pattern(self.number_pattern[2][1], self.width)
+        self.number_pattern[2] = "".join(row_pattern)
 
     @staticmethod
     def __repeat_pattern(pattern, repetitions):
