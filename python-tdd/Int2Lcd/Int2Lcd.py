@@ -62,12 +62,17 @@ class Int2Lcd:
             number_pattern[2] = " " + "".join(["_" for i in range(self.width)]) + "|"
 
         if self.height > 1:
-            new_patterns = []
-            for p in number_pattern:
-                if "|" in p:
-                    new_patterns.append((number_pattern.index(p), p.replace("_", " ")))
-            for position, p in new_patterns:
-                number_pattern.insert(position, p)
+            new_number_pattern = []
+            for pattern in number_pattern:
+                if "|" in pattern:
+                    for repetition in range(self.height):
+                        if repetition == 0:
+                            new_number_pattern.append(pattern.replace("_", " "))
+                        else:
+                            new_number_pattern.append(pattern)
+                else:
+                    new_number_pattern.append(pattern)
+            number_pattern = new_number_pattern
         return number_pattern
 
     @property
