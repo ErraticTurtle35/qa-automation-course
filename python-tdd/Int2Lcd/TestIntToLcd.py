@@ -129,3 +129,8 @@ class TestInt2Lcd(unittest.TestCase):
         int2lcd = Int2Lcd(width=3, height=1)
         result = int2lcd.convert2(9)
         self.assertListEqual([" ___ ", "|___|", "    |"], result)
+
+    def test_conversion_from_zero_to_lcd_with_height_2(self):
+        int2lcd = Int2Lcd(width=3, height=2)
+        result = int2lcd.convert2(0)
+        self.assertListEqual([' ___ ', '|   |', '|   |', '|   |', '|___|'], result)
