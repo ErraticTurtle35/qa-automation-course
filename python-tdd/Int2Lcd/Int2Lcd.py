@@ -23,7 +23,7 @@ class Int2Lcd:
         self.number_pattern = AVAILABLE_LCD_PATTERNS[number].copy()
         self._update_width()
         if self.height > 1:
-            new_number_pattern = self._update_height_of_rows(self.number_pattern)
+            new_number_pattern = self._update_height_of_rows()
             return new_number_pattern
         return self.number_pattern
 
@@ -93,9 +93,9 @@ class Int2Lcd:
             2].isspace():
             self.number_pattern[0] = " " + "".join([" " for i in range(self.width)]) + " "
 
-    def _update_height_of_rows(self, number_pattern):
+    def _update_height_of_rows(self):
         new_number_pattern = []
-        for pattern in number_pattern:
+        for pattern in self.number_pattern:
             if "|" in pattern:
                 for repetition in range(self.height):
                     if repetition != self.height - 1:
