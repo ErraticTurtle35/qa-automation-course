@@ -82,100 +82,100 @@ class TestInt2Lcd(unittest.TestCase):
 
     def test_conversion_from_zero_to_lcd_with_width_3(self):
         int2lcd = Int2Lcd(width=3, height=1)
-        result = int2lcd.convert2(0)
+        result = int2lcd.convert(0)
         self.assertListEqual([" ___ ", "|   |", "|___|"], result)
 
     def test_conversion_from_one_to_lcd_with_width_3(self):
         int2lcd = Int2Lcd(width=3, height=1)
-        result = int2lcd.convert2(1)
+        result = int2lcd.convert(1)
         self.assertListEqual(["     ", "    |", "    |"], result)
 
     def test_conversion_from_two_to_lcd_with_width_3(self):
         int2lcd = Int2Lcd(width=3, height=1)
-        result = int2lcd.convert2(2)
+        result = int2lcd.convert(2)
         self.assertListEqual([" ___ ", " ___|", "|___ "], result)
 
     def test_conversion_from_three_to_lcd_with_width_3(self):
         int2lcd = Int2Lcd(width=3, height=1)
-        result = int2lcd.convert2(3)
+        result = int2lcd.convert(3)
         self.assertListEqual([" ___ ", " ___|", " ___|"], result)
 
     def test_conversion_from_four_to_lcd_with_width_3(self):
         int2lcd = Int2Lcd(width=3, height=1)
-        result = int2lcd.convert2(4)
+        result = int2lcd.convert(4)
         self.assertListEqual(["     ", "|___|", "    |"], result)
 
     def test_conversion_from_five_to_lcd_with_width_3(self):
         int2lcd = Int2Lcd(width=3, height=1)
-        result = int2lcd.convert2(5)
+        result = int2lcd.convert(5)
         self.assertListEqual([" ___ ", "|___ ", " ___|"], result)
 
     def test_conversion_from_six_to_lcd_with_width_3(self):
         int2lcd = Int2Lcd(width=3, height=1)
-        result = int2lcd.convert2(6)
+        result = int2lcd.convert(6)
         self.assertListEqual([" ___ ", "|___ ", "|___|"], result)
 
     def test_conversion_from_seven_to_lcd_with_width_3(self):
         int2lcd = Int2Lcd(width=3, height=1)
-        result = int2lcd.convert2(7)
+        result = int2lcd.convert(7)
         self.assertListEqual([" ___ ", "    |", "    |"], result)
 
     def test_conversion_from_eight_to_lcd_with_width_3(self):
         int2lcd = Int2Lcd(width=3, height=1)
-        result = int2lcd.convert2(8)
+        result = int2lcd.convert(8)
         self.assertListEqual([" ___ ", "|___|", "|___|"], result)
 
     def test_conversion_from_nine_to_lcd_with_width_3(self):
         int2lcd = Int2Lcd(width=3, height=1)
-        result = int2lcd.convert2(9)
+        result = int2lcd.convert(9)
         self.assertListEqual([" ___ ", "|___|", "    |"], result)
 
     def test_conversion_from_zero_to_lcd_with_height_2(self):
         int2lcd = Int2Lcd(width=3, height=2)
-        result = int2lcd.convert2(0)
+        result = int2lcd.convert(0)
         self.assertListEqual([' ___ ', '|   |', '|   |', '|   |', '|___|'], result)
 
     def test_conversion_from_one_to_lcd_with_height_2(self):
         int2lcd = Int2Lcd(width=3, height=2)
-        result = int2lcd.convert2(1)
+        result = int2lcd.convert(1)
         self.assertListEqual(['     ', '    |', '    |', '    |', '    |'], result)
 
     def test_conversion_from_three_to_lcd_with_height_2(self):
         int2lcd = Int2Lcd(width=3, height=2)
-        result = int2lcd.convert2(3)
+        result = int2lcd.convert(3)
         self.assertListEqual([" ___ ", "    |", " ___|", "    |", " ___|"], result)
 
     def test_conversion_from_four_to_lcd_with_height_3(self):
         int2lcd = Int2Lcd(width=3, height=2)
-        result = int2lcd.convert2(4)
+        result = int2lcd.convert(4)
         self.assertListEqual(["     ", "|   |", "|___|", "    |", "    |"], result)
 
     def test_conversion_from_five_to_lcd_with_height_2(self):
         int2lcd = Int2Lcd(width=3, height=2)
-        result = int2lcd.convert2(5)
+        result = int2lcd.convert(5)
         self.assertListEqual([" ___ ", "|    ", "|___ ", "    |", " ___|"], result)
 
     def test_conversion_from_six_to_lcd_with_height_2(self):
         int2lcd = Int2Lcd(width=3, height=2)
-        result = int2lcd.convert2(6)
+        result = int2lcd.convert(6)
         self.assertListEqual([" ___ ", "|    ", "|___ ", "|   |", "|___|"], result)
 
     def test_conversion_from_seven_to_lcd_with_height_2(self):
         int2lcd = Int2Lcd(width=3, height=2)
-        result = int2lcd.convert2(7)
+        result = int2lcd.convert(7)
         self.assertListEqual([" ___ ", "    |", "    |", "    |", "    |"], result)
 
     def test_conversion_from_eight_to_lcd_with_height_2(self):
         int2lcd = Int2Lcd(width=3, height=2)
-        result = int2lcd.convert2(8)
+        result = int2lcd.convert(8)
         self.assertListEqual([" ___ ", "|   |", "|___|", "|   |", "|___|"], result)
 
     def test_conversion_from_nine_to_lcd_with_height_2(self):
         int2lcd = Int2Lcd(width=3, height=2)
-        result = int2lcd.convert2(9)
+        result = int2lcd.convert(9)
         self.assertListEqual([" ___ ", "|   |", "|___|", "    |", "    |"], result)
 
     def test_conversion_from_one_to_lcd_with_height_3(self):
         int2lcd = Int2Lcd(width=3, height=3)
-        result = int2lcd.convert2(2)
+        result = int2lcd.convert(2)
         self.assertListEqual([' ___ ', '    |', '    |', ' ___|', '|    ', '|    ', '|___ '], result)

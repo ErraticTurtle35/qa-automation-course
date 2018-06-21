@@ -20,9 +20,6 @@ class Int2Lcd:
         return [" ".join(column) for column in zip_longest(*lcd_numbers)]
 
     def convert(self, number):
-        return self.convert2(number)
-
-    def convert2(self, number):
         number_pattern = self.patterns[number].copy()
         if number_pattern[0][0].isspace() and number_pattern[0][1] == "_" and number_pattern[0][2].isspace():
             number_pattern[0] = " " + "".join(["_" for i in range(self.width)]) + " "
