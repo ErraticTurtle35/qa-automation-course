@@ -58,15 +58,22 @@ class Int2Lcd:
         return self.height > 1
 
     def _update_width_of_number_pattern(self):
-        self._update_width_of_the_first_row()
+        self.__update_width_of_the_first_row()
         self._update_width_of_the_middle_row()
         self._update_width_of_the_lower_row()
 
-    def _update_width_of_the_first_row(self):
-        if self.number_pattern[0].isspace():
-            self.number_pattern[0] = self.__repeat_pattern(" ", self.width + 2)
-        else:
-            self.number_pattern[0] = " " + self.__repeat_pattern("_", self.width) + " "
+    def _update_width_of_the_middle_row(self):
+        middle_row = self.number_pattern[1]
+        if middle_row[0].isspace() and middle_row[1].isspace() and middle_row[2] == "|":
+            self.number_pattern[1] = " " + self.__repeat_pattern(" ", self.width) + "|"
+        elif middle_row[0].isspace() and middle_row[1] == "_" and middle_row[2] == "|":
+            self.number_pattern[1] = " " + self.__repeat_pattern("_", self.width) + "|"
+        elif middle_row[0] == "|" and middle_row[1].isspace() and middle_row[2] == "|":
+            self.number_pattern[1] = "|" + self.__repeat_pattern(" ", self.width) + "|"
+        elif middle_row[0] == "|" and middle_row[1] == "_" and middle_row[2].isspace():
+            self.number_pattern[1] = "|" + self.__repeat_pattern("_", self.width) + " "
+        elif middle_row[0] == "|" and middle_row[1] == "_" and middle_row[2] == "|":
+            self.number_pattern[1] = "|" + self.__repeat_pattern("_", self.width) + "|"
 
     def _update_width_of_the_lower_row(self):
         if self.number_pattern[2][0] == "|" and self.number_pattern[2][1] == "_" and self.number_pattern[2][2] == "|":
@@ -81,22 +88,6 @@ class Int2Lcd:
             2] == "|":
             self.number_pattern[2] = " " + "".join(["_" for i in range(self.width)]) + "|"
 
-    def _update_width_of_the_middle_row(self):
-        if self.number_pattern[1][0] == "|" and self.number_pattern[1][1].isspace() and self.number_pattern[1][
-            2] == "|":
-            self.number_pattern[1] = "|" + "".join([" " for i in range(self.width)]) + "|"
-        elif self.number_pattern[1][0].isspace() and self.number_pattern[1][1].isspace() and self.number_pattern[1][
-            2] == "|":
-            self.number_pattern[1] = " " + "".join([" " for i in range(self.width)]) + "|"
-        elif self.number_pattern[1][0].isspace() and self.number_pattern[1][1] == "_" and self.number_pattern[1][
-            2] == "|":
-            self.number_pattern[1] = " " + "".join(["_" for i in range(self.width)]) + "|"
-        elif self.number_pattern[1][0] == "|" and self.number_pattern[1][1] == "_" and self.number_pattern[1][2] == "|":
-            self.number_pattern[1] = "|" + "".join(["_" for i in range(self.width)]) + "|"
-        elif self.number_pattern[1][0] == "|" and self.number_pattern[1][1] == "_" and self.number_pattern[1][
-            2].isspace():
-            self.number_pattern[1] = "|" + "".join(["_" for i in range(self.width)]) + " "
-
     def _update_height_of_number_pattern(self):
         new_number_pattern = []
         for pattern in self.number_pattern:
@@ -109,6 +100,12 @@ class Int2Lcd:
             else:
                 new_number_pattern.append(pattern)
         self.number_pattern = new_number_pattern
+
+    def __update_width_of_the_first_row(self):
+        if self.number_pattern[0].isspace():
+            self.number_pattern[0] = self.__repeat_pattern(" ", self.width + 2)
+        else:
+            self.number_pattern[0] = " " + self.__repeat_pattern("_", self.width) + " "
 
     @staticmethod
     def __repeat_pattern(pattern, repetitions):
